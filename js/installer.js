@@ -4,7 +4,7 @@ var installOrder = [];
 var dependents = [];
 //Remove special characters
 function polishArr(arr) {
-return arr.toString().replace(/[^a-zA-z0-9]/g, '');
+return arr.toString().replace(/[^a-zA-z0-9:]/g, '');
 }
 function strToArr(str, splitChar){
   return str.split(splitChar);
@@ -37,22 +37,22 @@ function organizer(dependents){
   }
 }
 // Install Service Controller
-function installController(str){
+function installController(pkgArr){
   // Break up main string into a usable array.
-  var pkgArr = strToArr(str, ",");
+  //var pkgArr = strToArr(str, ",");
   noDependents(pkgArr);
   organizer(dependents);
   console.log('install order: '+installOrder);
 }
 
-// Accept input from command line
-var prompt = require('prompt');
-
-// Start prompt
-prompt.start();
-
-//Get information from user: (package: dependency)
-prompt.get(['packages'], function(err, result){
-  //Call controlling function
-  return installController(result.packages);
-});
+// // Accept input from command line
+// var prompt = require('prompt');
+//
+// // Start prompt
+// prompt.start();
+//
+// //Get information from user: (package: dependency)
+// prompt.get(['packages'], function(err, result){
+//   //Call controlling function
+//   return installController(result.packages);
+// });
