@@ -26,3 +26,5 @@ function dependencies(depArr){
   }
   return installOrder;
 }
+console.log(dependencies(['A: B', 'B: C', 'C: ']));
+console.log(dependencies(['E: F', 'F: G', 'G: ', 'A: B', 'B: C', 'C: D', 'D: ']));
